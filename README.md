@@ -1,1 +1,2 @@
-# ComunicacaoDigital
+# Comunicacao Digital
+Projeto da disciplina Laboratório de Sistemas Computacionais: Comunicação Digital. Implementação em Verilog da comunicação de um teclado PS/2 com o kit FPGA DE2-115 como método de entrada e *display* LCD como dispositivo de saída.
