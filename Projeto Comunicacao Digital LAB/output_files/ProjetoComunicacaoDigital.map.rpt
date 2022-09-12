@@ -1,0 +1,763 @@
+Analysis & Synthesis report for ProjetoComunicacaoDigital
+Sun Jul 31 10:20:19 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |ProjetoTeclado|displayLCD:comb_8|proximo_estado
+  9. State Machine - |ProjetoTeclado|displayLCD:comb_8|estado
+ 10. State Machine - |ProjetoTeclado|PS2_to_LCD:comb_7|estado
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: leitorPS2:comb_6|registradorDesloc:regDesloc
+ 16. Parameter Settings for User Entity Instance: PS2_to_LCD:comb_7
+ 17. Parameter Settings for User Entity Instance: displayLCD:comb_8
+ 18. Port Connectivity Checks: "hexto7segment:display0"
+ 19. Port Connectivity Checks: "hexto7segment:display1"
+ 20. Port Connectivity Checks: "leitorPS2:comb_6|registradorDesloc:regDesloc"
+ 21. Port Connectivity Checks: "leitorPS2:comb_6"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+ 25. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Jul 31 10:20:19 2022       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; ProjetoComunicacaoDigital                   ;
+; Top-level Entity Name              ; ProjetoTeclado                              ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 475                                         ;
+;     Total combinational functions  ; 463                                         ;
+;     Dedicated logic registers      ; 114                                         ;
+; Total registers                    ; 114                                         ;
+; Total pins                         ; 32                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                     ;
++------------------------------------------------------------------+--------------------+---------------------------+
+; Option                                                           ; Setting            ; Default Value             ;
++------------------------------------------------------------------+--------------------+---------------------------+
+; Device                                                           ; EP4CE115F29C7      ;                           ;
+; Top-level entity name                                            ; ProjetoTeclado     ; ProjetoComunicacaoDigital ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V                 ;
+; Use smart compilation                                            ; Off                ; Off                       ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                        ;
+; Enable compact report table                                      ; Off                ; Off                       ;
+; Restructure Multiplexers                                         ; Auto               ; Auto                      ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                       ;
+; Preserve fewer node names                                        ; On                 ; On                        ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable                    ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001              ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993                 ;
+; State Machine Processing                                         ; Auto               ; Auto                      ;
+; Safe State Machine                                               ; Off                ; Off                       ;
+; Extract Verilog State Machines                                   ; On                 ; On                        ;
+; Extract VHDL State Machines                                      ; On                 ; On                        ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                       ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000                      ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                       ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                        ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                        ;
+; Parallel Synthesis                                               ; On                 ; On                        ;
+; DSP Block Balancing                                              ; Auto               ; Auto                      ;
+; NOT Gate Push-Back                                               ; On                 ; On                        ;
+; Power-Up Don't Care                                              ; On                 ; On                        ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                       ;
+; Remove Duplicate Registers                                       ; On                 ; On                        ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                       ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                       ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                       ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                       ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                       ;
+; Ignore SOFT Buffers                                              ; On                 ; On                        ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                       ;
+; Optimization Technique                                           ; Balanced           ; Balanced                  ;
+; Carry Chain Length                                               ; 70                 ; 70                        ;
+; Auto Carry Chains                                                ; On                 ; On                        ;
+; Auto Open-Drain Pins                                             ; On                 ; On                        ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                       ;
+; Auto ROM Replacement                                             ; On                 ; On                        ;
+; Auto RAM Replacement                                             ; On                 ; On                        ;
+; Auto DSP Block Replacement                                       ; On                 ; On                        ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto                      ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto                      ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                        ;
+; Strict RAM Replacement                                           ; Off                ; Off                       ;
+; Allow Synchronous Control Signals                                ; On                 ; On                        ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                       ;
+; Auto RAM Block Balancing                                         ; On                 ; On                        ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                       ;
+; Auto Resource Sharing                                            ; Off                ; Off                       ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                       ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                       ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                       ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                        ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                       ;
+; Timing-Driven Synthesis                                          ; On                 ; On                        ;
+; Report Parameter Settings                                        ; On                 ; On                        ;
+; Report Source Assignments                                        ; On                 ; On                        ;
+; Report Connectivity Checks                                       ; On                 ; On                        ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                       ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                         ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation        ;
+; HDL message level                                                ; Level2             ; Level2                    ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                       ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000                      ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000                      ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                       ;
+; Clock MUX Protection                                             ; On                 ; On                        ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                       ;
+; Block Design Naming                                              ; Auto               ; Auto                      ;
+; SDC constraint protection                                        ; Off                ; Off                       ;
+; Synthesis Effort                                                 ; Auto               ; Auto                      ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                        ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                       ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium                    ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto                      ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                        ;
++------------------------------------------------------------------+--------------------+---------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                   ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                     ; Library ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------+---------+
+; displayLCD.v                     ; yes             ; User Verilog HDL File  ; /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/displayLCD.v        ;         ;
+; leitorPS2.v                      ; yes             ; User Verilog HDL File  ; /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/leitorPS2.v         ;         ;
+; registradorDesloc.v              ; yes             ; User Verilog HDL File  ; /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/registradorDesloc.v ;         ;
+; ProjetoTeclado.v                 ; yes             ; User Verilog HDL File  ; /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v    ;         ;
+; hexto7segment.v                  ; yes             ; User Verilog HDL File  ; /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/hexto7segment.v     ;         ;
+; PS2_to_LCD.v                     ; yes             ; User Verilog HDL File  ; /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/PS2_to_LCD.v        ;         ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                      ;
++---------------------------------------------+----------------------------------------------------+
+; Resource                                    ; Usage                                              ;
++---------------------------------------------+----------------------------------------------------+
+; Estimated Total logic elements              ; 475                                                ;
+;                                             ;                                                    ;
+; Total combinational functions               ; 463                                                ;
+; Logic element usage by number of LUT inputs ;                                                    ;
+;     -- 4 input functions                    ; 301                                                ;
+;     -- 3 input functions                    ; 82                                                 ;
+;     -- <=2 input functions                  ; 80                                                 ;
+;                                             ;                                                    ;
+; Logic elements by mode                      ;                                                    ;
+;     -- normal mode                          ; 430                                                ;
+;     -- arithmetic mode                      ; 33                                                 ;
+;                                             ;                                                    ;
+; Total registers                             ; 114                                                ;
+;     -- Dedicated logic registers            ; 114                                                ;
+;     -- I/O registers                        ; 0                                                  ;
+;                                             ;                                                    ;
+; I/O pins                                    ; 32                                                 ;
+;                                             ;                                                    ;
+; Embedded Multiplier 9-bit elements          ; 0                                                  ;
+;                                             ;                                                    ;
+; Maximum fan-out node                        ; leitorPS2:comb_6|registradorDesloc:regDesloc|sr[5] ;
+; Maximum fan-out                             ; 98                                                 ;
+; Total fan-out                               ; 1952                                               ;
+; Average fan-out                             ; 3.05                                               ;
++---------------------------------------------+----------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                              ;
++-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------+-------------------+--------------+
+; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                          ; Entity Name       ; Library Name ;
++-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------+-------------------+--------------+
+; |ProjetoTeclado                     ; 463 (0)             ; 114 (0)                   ; 0           ; 0            ; 0       ; 0         ; 32   ; 0            ; |ProjetoTeclado                                              ; ProjetoTeclado    ; work         ;
+;    |PS2_to_LCD:comb_7|              ; 239 (239)           ; 18 (18)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ProjetoTeclado|PS2_to_LCD:comb_7                            ; PS2_to_LCD        ; work         ;
+;    |displayLCD:comb_8|              ; 195 (195)           ; 78 (78)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ProjetoTeclado|displayLCD:comb_8                            ; displayLCD        ; work         ;
+;    |hexto7segment:display0|         ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ProjetoTeclado|hexto7segment:display0                       ; hexto7segment     ; work         ;
+;    |hexto7segment:display1|         ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ProjetoTeclado|hexto7segment:display1                       ; hexto7segment     ; work         ;
+;    |leitorPS2:comb_6|               ; 15 (15)             ; 18 (10)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ProjetoTeclado|leitorPS2:comb_6                             ; leitorPS2         ; work         ;
+;       |registradorDesloc:regDesloc| ; 0 (0)               ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ProjetoTeclado|leitorPS2:comb_6|registradorDesloc:regDesloc ; registradorDesloc ; work         ;
++-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------+-------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ProjetoTeclado|displayLCD:comb_8|proximo_estado                                                                                                                                                                                                                                                                                                                  ;
++--------------------------------+-------------------------------+-----------------------+----------------------------+-----------------------+-----------------------------+-------------------------------+-----------------------------+------------------------------+--------------------------------+-------------------------+-----------------------+-----------------------+
+; Name                           ; proximo_estado.POSICAO_COMECO ; proximo_estado.LINHA1 ; proximo_estado.POSICAO_FIM ; proximo_estado.LINHA2 ; proximo_estado.ESCREVE_CHAR ; proximo_estado.ESPERA_COMANDO ; proximo_estado.LIGA_DISPLAY ; proximo_estado.LIMPA_DISPLAY ; proximo_estado.DESLIGA_DISPLAY ; proximo_estado.FUNC_SET ; proximo_estado.RESET3 ; proximo_estado.RESET2 ;
++--------------------------------+-------------------------------+-----------------------+----------------------------+-----------------------+-----------------------------+-------------------------------+-----------------------------+------------------------------+--------------------------------+-------------------------+-----------------------+-----------------------+
+; proximo_estado.RESET2          ; 0                             ; 0                     ; 0                          ; 0                     ; 0                           ; 0                             ; 0                           ; 0                            ; 0                              ; 0                       ; 0                     ; 0                     ;
+; proximo_estado.RESET3          ; 0                             ; 0                     ; 0                          ; 0                     ; 0                           ; 0                             ; 0                           ; 0                            ; 0                              ; 0                       ; 1                     ; 1                     ;
+; proximo_estado.FUNC_SET        ; 0                             ; 0                     ; 0                          ; 0                     ; 0                           ; 0                             ; 0                           ; 0                            ; 0                              ; 1                       ; 0                     ; 1                     ;
+; proximo_estado.DESLIGA_DISPLAY ; 0                             ; 0                     ; 0                          ; 0                     ; 0                           ; 0                             ; 0                           ; 0                            ; 1                              ; 0                       ; 0                     ; 1                     ;
+; proximo_estado.LIMPA_DISPLAY   ; 0                             ; 0                     ; 0                          ; 0                     ; 0                           ; 0                             ; 0                           ; 1                            ; 0                              ; 0                       ; 0                     ; 1                     ;
+; proximo_estado.LIGA_DISPLAY    ; 0                             ; 0                     ; 0                          ; 0                     ; 0                           ; 0                             ; 1                           ; 0                            ; 0                              ; 0                       ; 0                     ; 1                     ;
+; proximo_estado.ESPERA_COMANDO  ; 0                             ; 0                     ; 0                          ; 0                     ; 0                           ; 1                             ; 0                           ; 0                            ; 0                              ; 0                       ; 0                     ; 1                     ;
+; proximo_estado.ESCREVE_CHAR    ; 0                             ; 0                     ; 0                          ; 0                     ; 1                           ; 0                             ; 0                           ; 0                            ; 0                              ; 0                       ; 0                     ; 1                     ;
+; proximo_estado.LINHA2          ; 0                             ; 0                     ; 0                          ; 1                     ; 0                           ; 0                             ; 0                           ; 0                            ; 0                              ; 0                       ; 0                     ; 1                     ;
+; proximo_estado.POSICAO_FIM     ; 0                             ; 0                     ; 1                          ; 0                     ; 0                           ; 0                             ; 0                           ; 0                            ; 0                              ; 0                       ; 0                     ; 1                     ;
+; proximo_estado.LINHA1          ; 0                             ; 1                     ; 0                          ; 0                     ; 0                           ; 0                             ; 0                           ; 0                            ; 0                              ; 0                       ; 0                     ; 1                     ;
+; proximo_estado.POSICAO_COMECO  ; 1                             ; 0                     ; 0                          ; 0                     ; 0                           ; 0                             ; 0                           ; 0                            ; 0                              ; 0                       ; 0                     ; 1                     ;
++--------------------------------+-------------------------------+-----------------------+----------------------------+-----------------------+-----------------------------+-------------------------------+-----------------------------+------------------------------+--------------------------------+-------------------------+-----------------------+-----------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ProjetoTeclado|displayLCD:comb_8|estado                                                                                                                                                                                                                                                                                                                                                                                             ;
++------------------------+------------------+-------------------+-----------------------+---------------+--------------------+---------------+-----------------+-----------------+---------------+---------------------+---------------------+--------------------+--------------------+-----------------------+---------------------+----------------------+------------------------+-----------------+---------------+---------------+---------------+
+; Name                   ; estado.SETA_CIMA ; estado.SETA_BAIXO ; estado.POSICAO_COMECO ; estado.LINHA1 ; estado.POSICAO_FIM ; estado.LINHA2 ; estado.ANDA_ESQ ; estado.ANDA_DIR ; estado.SEGURA ; estado.ABAIXA_LCD_E ; estado.ESCREVE_CHAR ; estado.ESCREVE_DEC ; estado.ESCREVE_INC ; estado.ESPERA_COMANDO ; estado.LIGA_DISPLAY ; estado.LIMPA_DISPLAY ; estado.DESLIGA_DISPLAY ; estado.FUNC_SET ; estado.RESET3 ; estado.RESET2 ; estado.RESET1 ;
++------------------------+------------------+-------------------+-----------------------+---------------+--------------------+---------------+-----------------+-----------------+---------------+---------------------+---------------------+--------------------+--------------------+-----------------------+---------------------+----------------------+------------------------+-----------------+---------------+---------------+---------------+
+; estado.RESET1          ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 0             ;
+; estado.RESET2          ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 1             ; 1             ;
+; estado.RESET3          ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 1             ; 0             ; 1             ;
+; estado.FUNC_SET        ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 1               ; 0             ; 0             ; 1             ;
+; estado.DESLIGA_DISPLAY ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 1                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.LIMPA_DISPLAY   ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 1                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.LIGA_DISPLAY    ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 1                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.ESPERA_COMANDO  ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 1                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.ESCREVE_INC     ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 1                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.ESCREVE_DEC     ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 1                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.ESCREVE_CHAR    ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 1                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.ABAIXA_LCD_E    ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 1                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.SEGURA          ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 1             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.ANDA_DIR        ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 1               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.ANDA_ESQ        ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 1               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.LINHA2          ; 0                ; 0                 ; 0                     ; 0             ; 0                  ; 1             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.POSICAO_FIM     ; 0                ; 0                 ; 0                     ; 0             ; 1                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.LINHA1          ; 0                ; 0                 ; 0                     ; 1             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.POSICAO_COMECO  ; 0                ; 0                 ; 1                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.SETA_BAIXO      ; 0                ; 1                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
+; estado.SETA_CIMA       ; 1                ; 0                 ; 0                     ; 0             ; 0                  ; 0             ; 0               ; 0               ; 0             ; 0                   ; 0                   ; 0                  ; 0                  ; 0                     ; 0                   ; 0                    ; 0                      ; 0               ; 0             ; 0             ; 1             ;
++------------------------+------------------+-------------------+-----------------------+---------------+--------------------+---------------+-----------------+-----------------+---------------+---------------------+---------------------+--------------------+--------------------+-----------------------+---------------------+----------------------+------------------------+-----------------+---------------+---------------+---------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ProjetoTeclado|PS2_to_LCD:comb_7|estado                                                                                     ;
++--------------------+--------------------+----------------+----------------+----------------+----------------+----------------+---------------+
+; Name               ; estado.BREAK_DUPLO ; estado.DUPLO_2 ; estado.DUPLO_1 ; estado.BREAK_2 ; estado.BREAK_1 ; estado.SIMPLES ; estado.INICIO ;
++--------------------+--------------------+----------------+----------------+----------------+----------------+----------------+---------------+
+; estado.INICIO      ; 0                  ; 0              ; 0              ; 0              ; 0              ; 0              ; 0             ;
+; estado.SIMPLES     ; 0                  ; 0              ; 0              ; 0              ; 0              ; 1              ; 1             ;
+; estado.BREAK_1     ; 0                  ; 0              ; 0              ; 0              ; 1              ; 0              ; 1             ;
+; estado.BREAK_2     ; 0                  ; 0              ; 0              ; 1              ; 0              ; 0              ; 1             ;
+; estado.DUPLO_1     ; 0                  ; 0              ; 1              ; 0              ; 0              ; 0              ; 1             ;
+; estado.DUPLO_2     ; 0                  ; 1              ; 0              ; 0              ; 0              ; 0              ; 1             ;
+; estado.BREAK_DUPLO ; 1                  ; 0              ; 0              ; 0              ; 0              ; 0              ; 1             ;
++--------------------+--------------------+----------------+----------------+----------------+----------------+----------------+---------------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; displayLCD:comb_8|char[7]              ; Stuck at GND due to stuck port data_in ;
+; displayLCD:comb_8|LCD_RW_r             ; Stuck at GND due to stuck port data_in ;
+; displayLCD:comb_8|proximo_estado~2     ; Lost fanout                            ;
+; displayLCD:comb_8|proximo_estado~3     ; Lost fanout                            ;
+; displayLCD:comb_8|proximo_estado~4     ; Lost fanout                            ;
+; displayLCD:comb_8|proximo_estado~5     ; Lost fanout                            ;
+; displayLCD:comb_8|proximo_estado~6     ; Lost fanout                            ;
+; displayLCD:comb_8|proximo_estado~7     ; Lost fanout                            ;
+; displayLCD:comb_8|proximo_estado~8     ; Lost fanout                            ;
+; displayLCD:comb_8|proximo_estado~9     ; Lost fanout                            ;
+; displayLCD:comb_8|estado~14            ; Lost fanout                            ;
+; displayLCD:comb_8|estado~15            ; Lost fanout                            ;
+; displayLCD:comb_8|estado~16            ; Lost fanout                            ;
+; displayLCD:comb_8|estado~17            ; Lost fanout                            ;
+; displayLCD:comb_8|estado~18            ; Lost fanout                            ;
+; displayLCD:comb_8|estado~19            ; Lost fanout                            ;
+; displayLCD:comb_8|estado~20            ; Lost fanout                            ;
+; displayLCD:comb_8|estado~21            ; Lost fanout                            ;
+; PS2_to_LCD:comb_7|estado~2             ; Lost fanout                            ;
+; PS2_to_LCD:comb_7|estado~3             ; Lost fanout                            ;
+; PS2_to_LCD:comb_7|estado~4             ; Lost fanout                            ;
+; PS2_to_LCD:comb_7|estado~5             ; Lost fanout                            ;
+; Total Number of Removed Registers = 22 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 114   ;
+; Number of registers using Synchronous Clear  ; 20    ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 27    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; PS2_to_LCD:comb_7|comando_r[1]         ; 36      ;
+; PS2_to_LCD:comb_7|comando_r[2]         ; 38      ;
+; PS2_to_LCD:comb_7|comando_r[0]         ; 36      ;
+; PS2_to_LCD:comb_7|comando_r[3]         ; 25      ;
+; PS2_to_LCD:comb_7|comando_r[4]         ; 24      ;
+; PS2_to_LCD:comb_7|comando_r[5]         ; 16      ;
+; PS2_to_LCD:comb_7|comando_r[6]         ; 14      ;
+; PS2_to_LCD:comb_7|comando_r[7]         ; 8       ;
+; Total number of inverted registers = 8 ;         ;
++----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+; 256:1              ; 7 bits    ; 1190 LEs      ; 413 LEs              ; 777 LEs                ; Yes        ; |ProjetoTeclado|displayLCD:comb_8|char[6]    ;
+; 264:1              ; 4 bits    ; 704 LEs       ; 20 LEs               ; 684 LEs                ; Yes        ; |ProjetoTeclado|displayLCD:comb_8|posicao[0] ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |ProjetoTeclado|displayLCD:comb_8|estado     ;
+; 257:1              ; 2 bits    ; 342 LEs       ; 20 LEs               ; 322 LEs                ; No         ; |ProjetoTeclado|displayLCD:comb_8|estado     ;
+; 258:1              ; 6 bits    ; 1032 LEs      ; 132 LEs              ; 900 LEs                ; No         ; |ProjetoTeclado|displayLCD:comb_8|estado     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: leitorPS2:comb_6|registradorDesloc:regDesloc ;
++----------------+-------+------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                             ;
++----------------+-------+------------------------------------------------------------------+
+; N              ; 8     ; Signed Integer                                                   ;
++----------------+-------+------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PS2_to_LCD:comb_7 ;
++-----------------------+----------+-----------------------------+
+; Parameter Name        ; Value    ; Type                        ;
++-----------------------+----------+-----------------------------+
+; INICIO                ; 0000     ; Unsigned Binary             ;
+; SIMPLES               ; 0001     ; Unsigned Binary             ;
+; BREAK_1               ; 0010     ; Unsigned Binary             ;
+; BREAK_2               ; 0011     ; Unsigned Binary             ;
+; DUPLO_1               ; 0100     ; Unsigned Binary             ;
+; DUPLO_2               ; 0101     ; Unsigned Binary             ;
+; BREAK_DUPLO           ; 0110     ; Unsigned Binary             ;
+; char_a                ; 00000000 ; Unsigned Binary             ;
+; char_b                ; 00000001 ; Unsigned Binary             ;
+; char_c                ; 00000010 ; Unsigned Binary             ;
+; char_d                ; 00000011 ; Unsigned Binary             ;
+; char_e                ; 00000100 ; Unsigned Binary             ;
+; char_f                ; 00000101 ; Unsigned Binary             ;
+; char_g                ; 00000110 ; Unsigned Binary             ;
+; char_h                ; 00000111 ; Unsigned Binary             ;
+; char_i                ; 00001000 ; Unsigned Binary             ;
+; char_j                ; 00001001 ; Unsigned Binary             ;
+; char_k                ; 00001010 ; Unsigned Binary             ;
+; char_l                ; 00001011 ; Unsigned Binary             ;
+; char_m                ; 00001100 ; Unsigned Binary             ;
+; char_n                ; 00001101 ; Unsigned Binary             ;
+; char_o                ; 00001110 ; Unsigned Binary             ;
+; char_p                ; 00001111 ; Unsigned Binary             ;
+; char_q                ; 00010000 ; Unsigned Binary             ;
+; char_r                ; 00010001 ; Unsigned Binary             ;
+; char_s                ; 00010010 ; Unsigned Binary             ;
+; char_t                ; 00010011 ; Unsigned Binary             ;
+; char_u                ; 00010100 ; Unsigned Binary             ;
+; char_v                ; 00010101 ; Unsigned Binary             ;
+; char_w                ; 00010110 ; Unsigned Binary             ;
+; char_x                ; 00010111 ; Unsigned Binary             ;
+; char_y                ; 00011000 ; Unsigned Binary             ;
+; char_z                ; 00011001 ; Unsigned Binary             ;
+; char_A_maiusculo      ; 00011010 ; Unsigned Binary             ;
+; char_B_maiusculo      ; 00011011 ; Unsigned Binary             ;
+; char_C_maiusculo      ; 00011100 ; Unsigned Binary             ;
+; char_D_maiusculo      ; 00011101 ; Unsigned Binary             ;
+; char_E_maiusculo      ; 00011110 ; Unsigned Binary             ;
+; char_F_maiusculo      ; 00011111 ; Unsigned Binary             ;
+; char_G_maiusculo      ; 00100000 ; Unsigned Binary             ;
+; char_H_maiusculo      ; 00100001 ; Unsigned Binary             ;
+; char_I_maiusculo      ; 00100010 ; Unsigned Binary             ;
+; char_J_maiusculo      ; 00100011 ; Unsigned Binary             ;
+; char_K_maiusculo      ; 00100100 ; Unsigned Binary             ;
+; char_L_maiusculo      ; 00100101 ; Unsigned Binary             ;
+; char_M_maiusculo      ; 00100110 ; Unsigned Binary             ;
+; char_N_maiusculo      ; 00100111 ; Unsigned Binary             ;
+; char_O_maiusculo      ; 00101000 ; Unsigned Binary             ;
+; char_P_maiusculo      ; 00101001 ; Unsigned Binary             ;
+; char_Q_maiusculo      ; 00101010 ; Unsigned Binary             ;
+; char_R_maiusculo      ; 00101011 ; Unsigned Binary             ;
+; char_S_maiusculo      ; 00101100 ; Unsigned Binary             ;
+; char_T_maiusculo      ; 00101101 ; Unsigned Binary             ;
+; char_U_maiusculo      ; 00101110 ; Unsigned Binary             ;
+; char_V_maiusculo      ; 00101111 ; Unsigned Binary             ;
+; char_W_maiusculo      ; 00110000 ; Unsigned Binary             ;
+; char_X_maiusculo      ; 00110001 ; Unsigned Binary             ;
+; char_Y_maiusculo      ; 00110010 ; Unsigned Binary             ;
+; char_Z_maiusculo      ; 00110011 ; Unsigned Binary             ;
+; char_1                ; 00110100 ; Unsigned Binary             ;
+; char_2                ; 00110101 ; Unsigned Binary             ;
+; char_3                ; 00110110 ; Unsigned Binary             ;
+; char_4                ; 00110111 ; Unsigned Binary             ;
+; char_5                ; 00111000 ; Unsigned Binary             ;
+; char_6                ; 00111001 ; Unsigned Binary             ;
+; char_7                ; 00111010 ; Unsigned Binary             ;
+; char_8                ; 00111011 ; Unsigned Binary             ;
+; char_9                ; 00111100 ; Unsigned Binary             ;
+; char_0                ; 00111101 ; Unsigned Binary             ;
+; char_exclamacao       ; 00111110 ; Unsigned Binary             ;
+; char_hashtag          ; 00111111 ; Unsigned Binary             ;
+; char_cifrao           ; 01000000 ; Unsigned Binary             ;
+; char_porcentagem      ; 01000001 ; Unsigned Binary             ;
+; char_e_comercial      ; 01000010 ; Unsigned Binary             ;
+; char_asterisco        ; 01000011 ; Unsigned Binary             ;
+; char_abre_parenteses  ; 01000100 ; Unsigned Binary             ;
+; char_fecha_parenteses ; 01000101 ; Unsigned Binary             ;
+; char_menos            ; 01000110 ; Unsigned Binary             ;
+; char_underline        ; 01000111 ; Unsigned Binary             ;
+; char_igual            ; 01001000 ; Unsigned Binary             ;
+; char_mais             ; 01001001 ; Unsigned Binary             ;
+; char_abre_colchete    ; 01001010 ; Unsigned Binary             ;
+; char_fecha_colchete   ; 01001011 ; Unsigned Binary             ;
+; char_ponto            ; 01001100 ; Unsigned Binary             ;
+; char_maior            ; 01001101 ; Unsigned Binary             ;
+; char_virgula          ; 01001110 ; Unsigned Binary             ;
+; char_menor            ; 01001111 ; Unsigned Binary             ;
+; char_barra_direita    ; 01010000 ; Unsigned Binary             ;
+; char_interrogacao     ; 01010001 ; Unsigned Binary             ;
+; char_barra_veritcal   ; 01010010 ; Unsigned Binary             ;
+; char_apostrofe        ; 01010011 ; Unsigned Binary             ;
+; char_aspas            ; 01010100 ; Unsigned Binary             ;
+; char_ponto_e_virgula  ; 01010101 ; Unsigned Binary             ;
+; char_dois_pontos      ; 01010110 ; Unsigned Binary             ;
+; char_espaco           ; 01010111 ; Unsigned Binary             ;
+; char_backspace        ; 01011000 ; Unsigned Binary             ;
+; char_seta_dir         ; 01011001 ; Unsigned Binary             ;
+; char_seta_esq         ; 01011010 ; Unsigned Binary             ;
+; char_home             ; 01011011 ; Unsigned Binary             ;
+; char_end              ; 01011100 ; Unsigned Binary             ;
+; char_seta_baixo       ; 01011101 ; Unsigned Binary             ;
+; char_seta_cima        ; 01011110 ; Unsigned Binary             ;
++-----------------------+----------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: displayLCD:comb_8 ;
++-----------------------+----------+-----------------------------+
+; Parameter Name        ; Value    ; Type                        ;
++-----------------------+----------+-----------------------------+
+; write_inc             ; 0        ; Unsigned Binary             ;
+; write_dec             ; 1        ; Unsigned Binary             ;
+; char_a                ; 00000000 ; Unsigned Binary             ;
+; char_b                ; 00000001 ; Unsigned Binary             ;
+; char_c                ; 00000010 ; Unsigned Binary             ;
+; char_d                ; 00000011 ; Unsigned Binary             ;
+; char_e                ; 00000100 ; Unsigned Binary             ;
+; char_f                ; 00000101 ; Unsigned Binary             ;
+; char_g                ; 00000110 ; Unsigned Binary             ;
+; char_h                ; 00000111 ; Unsigned Binary             ;
+; char_i                ; 00001000 ; Unsigned Binary             ;
+; char_j                ; 00001001 ; Unsigned Binary             ;
+; char_k                ; 00001010 ; Unsigned Binary             ;
+; char_l                ; 00001011 ; Unsigned Binary             ;
+; char_m                ; 00001100 ; Unsigned Binary             ;
+; char_n                ; 00001101 ; Unsigned Binary             ;
+; char_o                ; 00001110 ; Unsigned Binary             ;
+; char_p                ; 00001111 ; Unsigned Binary             ;
+; char_q                ; 00010000 ; Unsigned Binary             ;
+; char_r                ; 00010001 ; Unsigned Binary             ;
+; char_s                ; 00010010 ; Unsigned Binary             ;
+; char_t                ; 00010011 ; Unsigned Binary             ;
+; char_u                ; 00010100 ; Unsigned Binary             ;
+; char_v                ; 00010101 ; Unsigned Binary             ;
+; char_w                ; 00010110 ; Unsigned Binary             ;
+; char_x                ; 00010111 ; Unsigned Binary             ;
+; char_y                ; 00011000 ; Unsigned Binary             ;
+; char_z                ; 00011001 ; Unsigned Binary             ;
+; char_A_maiusculo      ; 00011010 ; Unsigned Binary             ;
+; char_B_maiusculo      ; 00011011 ; Unsigned Binary             ;
+; char_C_maiusculo      ; 00011100 ; Unsigned Binary             ;
+; char_D_maiusculo      ; 00011101 ; Unsigned Binary             ;
+; char_E_maiusculo      ; 00011110 ; Unsigned Binary             ;
+; char_F_maiusculo      ; 00011111 ; Unsigned Binary             ;
+; char_G_maiusculo      ; 00100000 ; Unsigned Binary             ;
+; char_H_maiusculo      ; 00100001 ; Unsigned Binary             ;
+; char_I_maiusculo      ; 00100010 ; Unsigned Binary             ;
+; char_J_maiusculo      ; 00100011 ; Unsigned Binary             ;
+; char_K_maiusculo      ; 00100100 ; Unsigned Binary             ;
+; char_L_maiusculo      ; 00100101 ; Unsigned Binary             ;
+; char_M_maiusculo      ; 00100110 ; Unsigned Binary             ;
+; char_N_maiusculo      ; 00100111 ; Unsigned Binary             ;
+; char_O_maiusculo      ; 00101000 ; Unsigned Binary             ;
+; char_P_maiusculo      ; 00101001 ; Unsigned Binary             ;
+; char_Q_maiusculo      ; 00101010 ; Unsigned Binary             ;
+; char_R_maiusculo      ; 00101011 ; Unsigned Binary             ;
+; char_S_maiusculo      ; 00101100 ; Unsigned Binary             ;
+; char_T_maiusculo      ; 00101101 ; Unsigned Binary             ;
+; char_U_maiusculo      ; 00101110 ; Unsigned Binary             ;
+; char_V_maiusculo      ; 00101111 ; Unsigned Binary             ;
+; char_W_maiusculo      ; 00110000 ; Unsigned Binary             ;
+; char_X_maiusculo      ; 00110001 ; Unsigned Binary             ;
+; char_Y_maiusculo      ; 00110010 ; Unsigned Binary             ;
+; char_Z_maiusculo      ; 00110011 ; Unsigned Binary             ;
+; char_1                ; 00110100 ; Unsigned Binary             ;
+; char_2                ; 00110101 ; Unsigned Binary             ;
+; char_3                ; 00110110 ; Unsigned Binary             ;
+; char_4                ; 00110111 ; Unsigned Binary             ;
+; char_5                ; 00111000 ; Unsigned Binary             ;
+; char_6                ; 00111001 ; Unsigned Binary             ;
+; char_7                ; 00111010 ; Unsigned Binary             ;
+; char_8                ; 00111011 ; Unsigned Binary             ;
+; char_9                ; 00111100 ; Unsigned Binary             ;
+; char_0                ; 00111101 ; Unsigned Binary             ;
+; char_exclamacao       ; 00111110 ; Unsigned Binary             ;
+; char_hashtag          ; 00111111 ; Unsigned Binary             ;
+; char_cifrao           ; 01000000 ; Unsigned Binary             ;
+; char_porcentagem      ; 01000001 ; Unsigned Binary             ;
+; char_e_comercial      ; 01000010 ; Unsigned Binary             ;
+; char_asterisco        ; 01000011 ; Unsigned Binary             ;
+; char_abre_parenteses  ; 01000100 ; Unsigned Binary             ;
+; char_fecha_parenteses ; 01000101 ; Unsigned Binary             ;
+; char_menos            ; 01000110 ; Unsigned Binary             ;
+; char_underline        ; 01000111 ; Unsigned Binary             ;
+; char_igual            ; 01001000 ; Unsigned Binary             ;
+; char_mais             ; 01001001 ; Unsigned Binary             ;
+; char_abre_colchete    ; 01001010 ; Unsigned Binary             ;
+; char_fecha_colchete   ; 01001011 ; Unsigned Binary             ;
+; char_ponto            ; 01001100 ; Unsigned Binary             ;
+; char_maior            ; 01001101 ; Unsigned Binary             ;
+; char_virgula          ; 01001110 ; Unsigned Binary             ;
+; char_menor            ; 01001111 ; Unsigned Binary             ;
+; char_barra_direita    ; 01010000 ; Unsigned Binary             ;
+; char_interrogacao     ; 01010001 ; Unsigned Binary             ;
+; char_barra_veritcal   ; 01010010 ; Unsigned Binary             ;
+; char_apostrofe        ; 01010011 ; Unsigned Binary             ;
+; char_aspas            ; 01010100 ; Unsigned Binary             ;
+; char_ponto_e_virgula  ; 01010101 ; Unsigned Binary             ;
+; char_dois_pontos      ; 01010110 ; Unsigned Binary             ;
+; char_espaco           ; 01010111 ; Unsigned Binary             ;
+; char_backspace        ; 01011000 ; Unsigned Binary             ;
+; char_seta_dir         ; 01011001 ; Unsigned Binary             ;
+; char_seta_esq         ; 01011010 ; Unsigned Binary             ;
+; char_home             ; 01011011 ; Unsigned Binary             ;
+; char_end              ; 01011100 ; Unsigned Binary             ;
+; char_seta_baixo       ; 01011101 ; Unsigned Binary             ;
+; char_seta_cima        ; 01011110 ; Unsigned Binary             ;
+; RESET1                ; 00000000 ; Unsigned Binary             ;
+; RESET2                ; 00000001 ; Unsigned Binary             ;
+; RESET3                ; 00000010 ; Unsigned Binary             ;
+; FUNC_SET              ; 00000011 ; Unsigned Binary             ;
+; DESLIGA_DISPLAY       ; 00000100 ; Unsigned Binary             ;
+; LIMPA_DISPLAY         ; 00000101 ; Unsigned Binary             ;
+; LIGA_DISPLAY          ; 00000110 ; Unsigned Binary             ;
+; ESPERA_COMANDO        ; 00000111 ; Unsigned Binary             ;
+; ESCREVE_INC           ; 00001000 ; Unsigned Binary             ;
+; ESCREVE_DEC           ; 00001001 ; Unsigned Binary             ;
+; ESCREVE_CHAR          ; 00001010 ; Unsigned Binary             ;
+; ABAIXA_LCD_E          ; 00001011 ; Unsigned Binary             ;
+; SEGURA                ; 00001100 ; Unsigned Binary             ;
+; ANDA_DIR              ; 00001101 ; Unsigned Binary             ;
+; ANDA_ESQ              ; 00001110 ; Unsigned Binary             ;
+; LINHA2                ; 00001111 ; Unsigned Binary             ;
+; POSICAO_FIM           ; 00010000 ; Unsigned Binary             ;
+; LINHA1                ; 00010001 ; Unsigned Binary             ;
+; POSICAO_COMECO        ; 00010010 ; Unsigned Binary             ;
+; SETA_BAIXO            ; 00010011 ; Unsigned Binary             ;
+; SETA_CIMA             ; 00010100 ; Unsigned Binary             ;
++-----------------------+----------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "hexto7segment:display0"                                                                                                                      ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                       ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; bin  ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (18 bits) it drives.  Extra input bit(s) "bin[17..4]" will be connected to GND. ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "hexto7segment:display1"                                                                                                                      ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                       ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; bin  ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (18 bits) it drives.  Extra input bit(s) "bin[17..4]" will be connected to GND. ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "leitorPS2:comb_6|registradorDesloc:regDesloc" ;
++-------+-------+----------+-----------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                       ;
++-------+-------+----------+-----------------------------------------------+
+; reset ; Input ; Info     ; Stuck at GND                                  ;
++-------+-------+----------+-----------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "leitorPS2:comb_6"                                                                                         ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; count ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 32                          ;
+; cycloneiii_ff         ; 114                         ;
+;     ENA               ; 19                          ;
+;     ENA SLD           ; 8                           ;
+;     SCLR              ; 20                          ;
+;     plain             ; 67                          ;
+; cycloneiii_lcell_comb ; 467                         ;
+;     arith             ; 33                          ;
+;         2 data inputs ; 32                          ;
+;         3 data inputs ; 1                           ;
+;     normal            ; 434                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 42                          ;
+;         3 data inputs ; 81                          ;
+;         4 data inputs ; 301                         ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.55                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sun Jul 31 10:20:13 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ProjetoComunicacaoDigital -c ProjetoComunicacaoDigital
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file displayLCD.v
+    Info (12023): Found entity 1: displayLCD File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/displayLCD.v Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file leitorPS2.v
+    Info (12023): Found entity 1: leitorPS2 File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/leitorPS2.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file registradorDesloc.v
+    Info (12023): Found entity 1: registradorDesloc File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/registradorDesloc.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file ProjetoTeclado.v
+    Info (12023): Found entity 1: ProjetoTeclado File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hexto7segment.v
+    Info (12023): Found entity 1: hexto7segment File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/hexto7segment.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file PS2_to_LCD.v
+    Info (12023): Found entity 1: PS2_to_LCD File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/PS2_to_LCD.v Line: 6
+Critical Warning (10846): Verilog HDL Instantiation warning at ProjetoTeclado.v(27): instance has no name File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 27
+Critical Warning (10846): Verilog HDL Instantiation warning at ProjetoTeclado.v(29): instance has no name File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 29
+Critical Warning (10846): Verilog HDL Instantiation warning at ProjetoTeclado.v(34): instance has no name File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 34
+Info (12127): Elaborating entity "ProjetoTeclado" for the top level hierarchy
+Info (12128): Elaborating entity "leitorPS2" for hierarchy "leitorPS2:comb_6" File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 27
+Info (12128): Elaborating entity "registradorDesloc" for hierarchy "leitorPS2:comb_6|registradorDesloc:regDesloc" File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/leitorPS2.v Line: 35
+Info (12128): Elaborating entity "PS2_to_LCD" for hierarchy "PS2_to_LCD:comb_7" File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 29
+Info (12128): Elaborating entity "hexto7segment" for hierarchy "hexto7segment:display1" File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 31
+Info (12128): Elaborating entity "displayLCD" for hierarchy "displayLCD:comb_8" File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 34
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LCD_RW" is stuck at GND File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 12
+    Warning (13410): Pin "LCD_ON" is stuck at VCC File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 12
+    Warning (13410): Pin "LCD_BLON" is stuck at VCC File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v Line: 12
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 20 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/output_files/ProjetoComunicacaoDigital.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 508 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 29 output pins
+    Info (21061): Implemented 476 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 473 megabytes
+    Info: Processing ended: Sun Jul 31 10:20:19 2022
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:12
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/output_files/ProjetoComunicacaoDigital.map.smsg.
+
+

@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at leitorPS2.v(38): always construct contains both blocking and non-blocking assignments File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/leitorPS2.v Line: 38
+Warning (10268): Verilog HDL information at PS2_to_LCD.v(151): always construct contains both blocking and non-blocking assignments File: /home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/PS2_to_LCD.v Line: 151

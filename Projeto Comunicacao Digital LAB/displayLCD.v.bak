@@ -1,0 +1,212 @@
+module displayLCD(CLK50MHz, num_comando, comando, LCD_RS, LCD_E,
+	LCD_RW, LCD_DATA);
+	
+	// clock de 50 MHz do kit
+	input CLK50MHz
+	// indicador de numero de comando recebido
+	input num_comando;
+	// codigo do comando
+	input [7:0] comando;
+
+	// LCD RS, E, RW e DATA;
+	output LCD_RS, LCD_E, LCD_RW;
+	output [7:0] LCD_DATA;
+
+	// ESTADOS
+	parameter
+	RESET1 = 4'd0,
+	RESET2 = 4'd1,
+	RESET3 = 4'd2,
+	FUNC_SET = 4'd3,
+	DESLIGA_DISPLAY = 4'd4,
+	LIMPA_DISPLAY = 4'd5,
+	LIGA_DISPLAY = 4'd6,
+	ESPERA_COMANDO = 4'd7,
+	ESCREVE_INC = 4'd8,
+	ESCREVE_DEC = 4'd9,
+	ESCREVE_CHAR = 4'd10,
+	ABAIXA_LCD_E = 4'd11,
+	SEGURA = 4'd12;
+
+	reg [3:0] estado, proximo_estado;
+	reg [7:0] LCD_DATA_r;
+	reg LCD_RS_r, LCD_E_r, LCD_RW_r;
+	reg num_comando_r;
+	reg [19:0] CLK_CLOUNT_400Hz;
+	reg CLK400Hz;
+
+	assign LCD_RS = LCD_RS_r;
+	assign LCD_E = LCD_E_r;
+	assign LCD_RW = LCD_RW_r;
+	assign LCD_DATA = LCD_DATA_r;
+
+	initial begin
+		estado = RESET1;
+		CLK_CLOUNT_400Hz = 20'h00000;
+		num_comando_r = 1'b0;
+	end
+
+	// sinal de clock 400Hz
+	always @(posedge CLK50MHz) begin
+		if (CLK_CLOUNT_400Hz <= 20'h0F424) begin
+			CLK_CLOUNT_400Hz <= CLK_CLOUNT_400Hz + 1'b1;
+		end
+		else begin
+			CLK_CLOUNT_400Hz <= 20'h00000;
+			CLK400Hz <= ~CLK400Hz;
+		end
+	end
+
+	// maquina de estados para controlar o display
+	always @(posedge CLK400Hz) begin
+		case(estado) begin
+			// passo de inicializacao 1
+			RESET1: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;		// instrucao
+				LCD_RW_r <= 1'b0;		// escrita
+				// h'C0 -> interface de 8 bits
+				//		-> duas linhas
+				//		-> fonte 5x8
+				LCD_DATA_r <= 8'h38;	// define uso
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= RESET2;
+			end
+			// passo de inicializacao 2
+			RESET2: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;		// instrucao
+				LCD_RW_r <= 1'b0;		// escrita
+				LCD_DATA_r <= 8'h38;	// define uso
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= RESET3;
+			end
+			// passo de inicializacao 3
+			RESET3: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;		// instrucao
+				LCD_RW_r <= 1'b0;		// escrita
+				LCD_DATA_r <= 8'h38;	// define uso
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= FUNC_SET;
+			end
+			// passo de inicializacao 4
+			FUNC_SET: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;		// instrucao
+				LCD_RW_r <= 1'b0;		// escrita
+				LCD_DATA_r <= 8'h38;	// define uso
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= DESLIGA_DISPLAY;
+			end
+			// desliga display e cursor
+			DESLIGA_DISPLAY: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;		// instrucao
+				LCD_RW_r <= 1'b0;		// escrita
+				// h'08 -> desliga display
+				//		-> desliga piscar do cursor
+				//		-> desliga bit de controle
+				LCD_DATA_r <= 8'h08;	// desliga
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= LIMPA_DISPLAY;
+			end
+			// limpa display e desliga o cursor
+			LIMPA_DISPLAY: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;		// instrucao
+				LCD_RW_r <= 1'b0;		// escrita
+				// h'08 -> muda para o primeiro endereco do display
+				LCD_DATA_r <= 8'h01;	// limpa
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= LIGA_DISPLAY;
+			end
+			// liga o display e liga o cursor
+			LIGA_DISPLAY: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;		// instrucao
+				LCD_RW_r <= 1'b0;		// escrita
+				LCD_DATA_r <= 8'h0F;
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= ESPERA_COMANDO;
+			end
+			ESPERA_COMANDO: begin
+				LCD_E_r <= 1'b1;
+				if (num_comando != num_comando_r) begin
+					num_comando_r <= num_comando;
+					case(comando) begin
+						8'b01000001,	// A
+						8'b01000010,	// B
+						8'b01000011,	// C
+						8'b01000100,	// D
+						8'b01000101,	// E
+						8'b01000110,	// F
+						8'b01000111,	// G
+						8'b01001000,	// H
+						8'b01001001,	// I
+						8'b01001010,	// J
+						8'b01001011,	// K
+						8'b01001100,	// L
+						8'b01001101,	// M
+						8'b01001110,	// N
+						8'b01001111,	// O
+						8'b01010000,	// P
+						8'b01010001,	// Q
+						8'b01010010,	// R
+						8'b01010011,	// S
+						8'b01010100,	// T
+						8'b01010101,	// U
+						8'b01010110,	// V
+						8'b01010111,	// W
+						8'b01011000,	// X
+						8'b01011001,	// Y
+						8'b01011010:	// Z
+							begin
+								estado <= ESCREVE_INC;
+							end
+						8'b00100000:	// espaco
+							begin
+								estado <= ESCREVE_DEC;
+							end
+					endcase
+				end
+				else begin
+					estado <= ESPERA_COMANDO;
+				end
+			end
+			ESCREVE_INC: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;
+				LCD_RW_r <= 1'b0;
+				LCD_DATA_r <= 8'h06;
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= ESCREVE_CHAR;
+			end
+			ESCREVE_DESC: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b0;
+				LCD_RW_r <= 1'b0;
+				LCD_DATA_r <= 8'h04;
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= ESCREVE_CHAR;
+			end
+			ESCREVE_CHAR: begin
+				LCD_E_r <= 1'b1;
+				LCD_RS_r <= 1'b1;
+				LCD_RW_r <= 1'b0;
+				LCD_DATA_r <= comando;
+				estado <= ABAIXA_LCD_E;
+				proximo_estado <= ESPERA_COMANDO;
+			end
+
+			ABAIXA_LCD_E: begin
+				LCD_E_r <= 1'b0;
+				estado <= SEGURA;
+			end
+			SEGURA: begin
+				estado <= proximo_estado;
+			end
+		endcase
+	end
+
+endmodule

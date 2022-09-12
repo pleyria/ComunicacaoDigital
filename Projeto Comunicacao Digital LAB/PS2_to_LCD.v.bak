@@ -1,0 +1,81 @@
+module PS2_to_LCD(scancode, finish_ps2, comando, num_comando);
+	// PS2
+	input [7:0] scancode;
+	input finish_ps2;
+	
+	// LCD
+	output [7:0] comando;
+	output num_comando;
+	
+	reg [3:0] estado;
+	reg [7:0] comando_r;
+	reg num_comando_r;
+	
+	// estados
+	INICIO = 4'd0;
+	SIMPLES = 4'd1;
+	BREAK_SIMPLES = 4'd2;
+	DUPLO = 4'd3;
+	MAKE_DUPLO = 4'd4;
+	BREAK_DUPLO = 4'd5;
+	
+	assign comando = comando_r;
+	assign num_comando = num_comando_r;
+
+	initial begin
+		estado = INICIO;
+		comando_r = 8'hFF;
+		num_comando_r = 1'b0;
+	end
+	
+	always @(posedge finish_ps2) begin
+		case(estado)
+			INICIO: begin
+				if (scancode == 8'hE0) begin
+					estado <= DUPLO;
+				end
+				else begin
+					estado <= SIMPLES;
+				end
+			end
+			
+			SIMPLES: begin
+				if (scancode == 8'hF0) begin
+					estado <= BREAK_SIMPLES;
+				end
+				else begin
+					// ajustar com os comandos aqui depois
+					comando_r <= scancode;
+					num_comando_r <= ~num_comando_r;
+					estado <= INICIO;
+				end
+			end
+			
+			BREAK_SIMPLES: begin
+				estado <= INICIO;
+			end
+			
+			DUPLO: begin
+				if (scancode == 8'hF0) begin
+					estado <= BREAK_DUPLO;
+				end
+				else begin
+					estado <= MAKE_DUPLO;
+				end
+			end
+			
+			MAKE_DUPLO: begin
+				// ajustar com os comandos aqui depois
+				comando_r <= scancode;
+				num_comando_r <= ~num_comando_r;
+				estado <= INICIO;
+			end
+			
+			BREAK_DUPLO: begin
+				estado <= INICIO;
+			end
+			
+		endcase
+	end
+
+endmodule

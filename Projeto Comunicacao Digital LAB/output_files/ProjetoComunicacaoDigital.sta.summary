@@ -1,0 +1,149 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'displayLCD:comb_8|CLK400Hz'
+Slack : -4.721
+TNS   : -139.247
+
+Type  : Slow 1200mV 85C Model Setup 'CLK50MHz'
+Slack : -3.797
+TNS   : -61.597
+
+Type  : Slow 1200mV 85C Model Setup 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : -3.317
+TNS   : -31.728
+
+Type  : Slow 1200mV 85C Model Setup 'clk_ps2'
+Slack : -1.329
+TNS   : -17.937
+
+Type  : Slow 1200mV 85C Model Hold 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : -0.015
+TNS   : -0.015
+
+Type  : Slow 1200mV 85C Model Hold 'displayLCD:comb_8|CLK400Hz'
+Slack : 0.388
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLK50MHz'
+Slack : 0.427
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk_ps2'
+Slack : 0.440
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLK50MHz'
+Slack : -3.000
+TNS   : -29.985
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_ps2'
+Slack : -3.000
+TNS   : -26.130
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'displayLCD:comb_8|CLK400Hz'
+Slack : -1.285
+TNS   : -73.245
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : -1.285
+TNS   : -21.845
+
+Type  : Slow 1200mV 0C Model Setup 'displayLCD:comb_8|CLK400Hz'
+Slack : -4.256
+TNS   : -122.922
+
+Type  : Slow 1200mV 0C Model Setup 'CLK50MHz'
+Slack : -3.379
+TNS   : -54.369
+
+Type  : Slow 1200mV 0C Model Setup 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : -2.943
+TNS   : -28.108
+
+Type  : Slow 1200mV 0C Model Setup 'clk_ps2'
+Slack : -1.089
+TNS   : -14.690
+
+Type  : Slow 1200mV 0C Model Hold 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : 0.049
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'displayLCD:comb_8|CLK400Hz'
+Slack : 0.340
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLK50MHz'
+Slack : 0.387
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk_ps2'
+Slack : 0.387
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLK50MHz'
+Slack : -3.000
+TNS   : -29.985
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_ps2'
+Slack : -3.000
+TNS   : -26.130
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'displayLCD:comb_8|CLK400Hz'
+Slack : -1.285
+TNS   : -73.245
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : -1.285
+TNS   : -21.845
+
+Type  : Fast 1200mV 0C Model Setup 'displayLCD:comb_8|CLK400Hz'
+Slack : -1.826
+TNS   : -41.177
+
+Type  : Fast 1200mV 0C Model Setup 'CLK50MHz'
+Slack : -1.413
+TNS   : -19.413
+
+Type  : Fast 1200mV 0C Model Setup 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : -1.321
+TNS   : -14.624
+
+Type  : Fast 1200mV 0C Model Setup 'clk_ps2'
+Slack : -0.106
+TNS   : -0.305
+
+Type  : Fast 1200mV 0C Model Hold 'displayLCD:comb_8|CLK400Hz'
+Slack : 0.175
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : 0.182
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLK50MHz'
+Slack : 0.191
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk_ps2'
+Slack : 0.199
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK50MHz'
+Slack : -3.000
+TNS   : -25.302
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_ps2'
+Slack : -3.000
+TNS   : -24.126
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'displayLCD:comb_8|CLK400Hz'
+Slack : -1.000
+TNS   : -57.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'PS2_to_LCD:comb_7|r_finish_ps2'
+Slack : -1.000
+TNS   : -17.000
+
+------------------------------------------------------------

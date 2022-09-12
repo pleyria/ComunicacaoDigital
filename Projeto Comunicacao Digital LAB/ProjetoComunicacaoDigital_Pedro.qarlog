@@ -1,0 +1,31 @@
+Quartus Prime Archive log --	/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoComunicacaoDigital_Pedro.qarlog
+
+Archive:	/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoComunicacaoDigital_Pedro.qar
+Date:		Sun Jul 31 10:24:04 2022
+Quartus Prime		20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+/home/pedro/intelFPGA_lite/20.1/quartus/linux64/assignment_defaults.qdf
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/PS2_to_LCD.v
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/PS2_to_LCD.vwf
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/PS2_to_LCD_LAB.vwf
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoComunicacaoDigital.qpf
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoComunicacaoDigital.qsf
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoComunicacaoDigital.tcl
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoTeclado.v
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/displayLCD.v
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/hexto7segment.v
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/leitorPS2.v
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/leitorPS2.vwf
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/registradorDesloc.v
+/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/registradorDesloc.vwf
+	======= Total: 14 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Sun Jul 31 10:25:03 2022
+Source archive file:	/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoComunicacaoDigital_Pedro.qar
+Archive was extracted into	/home/pedro/projetos quartus/Projeto Comunicacao Digital LAB/ProjetoComunicacaoDigital_Pedro_restored/
+		 - successfully.

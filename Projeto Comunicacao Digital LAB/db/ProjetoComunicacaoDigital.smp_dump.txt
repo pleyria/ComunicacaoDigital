@@ -1,0 +1,49 @@
+
+State Machine - |ProjetoTeclado|displayLCD:comb_8|proximo_estado
+Name proximo_estado.POSICAO_COMECO proximo_estado.LINHA1 proximo_estado.POSICAO_FIM proximo_estado.LINHA2 proximo_estado.ESCREVE_CHAR proximo_estado.ESPERA_COMANDO proximo_estado.LIGA_DISPLAY proximo_estado.LIMPA_DISPLAY proximo_estado.DESLIGA_DISPLAY proximo_estado.FUNC_SET proximo_estado.RESET3 proximo_estado.RESET2 
+proximo_estado.RESET2 0 0 0 0 0 0 0 0 0 0 0 0 
+proximo_estado.RESET3 0 0 0 0 0 0 0 0 0 0 1 1 
+proximo_estado.FUNC_SET 0 0 0 0 0 0 0 0 0 1 0 1 
+proximo_estado.DESLIGA_DISPLAY 0 0 0 0 0 0 0 0 1 0 0 1 
+proximo_estado.LIMPA_DISPLAY 0 0 0 0 0 0 0 1 0 0 0 1 
+proximo_estado.LIGA_DISPLAY 0 0 0 0 0 0 1 0 0 0 0 1 
+proximo_estado.ESPERA_COMANDO 0 0 0 0 0 1 0 0 0 0 0 1 
+proximo_estado.ESCREVE_CHAR 0 0 0 0 1 0 0 0 0 0 0 1 
+proximo_estado.LINHA2 0 0 0 1 0 0 0 0 0 0 0 1 
+proximo_estado.POSICAO_FIM 0 0 1 0 0 0 0 0 0 0 0 1 
+proximo_estado.LINHA1 0 1 0 0 0 0 0 0 0 0 0 1 
+proximo_estado.POSICAO_COMECO 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |ProjetoTeclado|displayLCD:comb_8|estado
+Name estado.SETA_CIMA estado.SETA_BAIXO estado.POSICAO_COMECO estado.LINHA1 estado.POSICAO_FIM estado.LINHA2 estado.ANDA_ESQ estado.ANDA_DIR estado.SEGURA estado.ABAIXA_LCD_E estado.ESCREVE_CHAR estado.ESCREVE_DEC estado.ESCREVE_INC estado.ESPERA_COMANDO estado.LIGA_DISPLAY estado.LIMPA_DISPLAY estado.DESLIGA_DISPLAY estado.FUNC_SET estado.RESET3 estado.RESET2 estado.RESET1 
+estado.RESET1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+estado.RESET2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+estado.RESET3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+estado.FUNC_SET 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+estado.DESLIGA_DISPLAY 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+estado.LIMPA_DISPLAY 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+estado.LIGA_DISPLAY 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+estado.ESPERA_COMANDO 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+estado.ESCREVE_INC 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+estado.ESCREVE_DEC 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+estado.ESCREVE_CHAR 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+estado.ABAIXA_LCD_E 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+estado.SEGURA 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.ANDA_DIR 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.ANDA_ESQ 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.LINHA2 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.POSICAO_FIM 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.LINHA1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.POSICAO_COMECO 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.SETA_BAIXO 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.SETA_CIMA 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |ProjetoTeclado|PS2_to_LCD:comb_7|estado
+Name estado.BREAK_DUPLO estado.DUPLO_2 estado.DUPLO_1 estado.BREAK_2 estado.BREAK_1 estado.SIMPLES estado.INICIO 
+estado.INICIO 0 0 0 0 0 0 0 
+estado.SIMPLES 0 0 0 0 0 1 1 
+estado.BREAK_1 0 0 0 0 1 0 1 
+estado.BREAK_2 0 0 0 1 0 0 1 
+estado.DUPLO_1 0 0 1 0 0 0 1 
+estado.DUPLO_2 0 1 0 0 0 0 1 
+estado.BREAK_DUPLO 1 0 0 0 0 0 1 
