@@ -1,4 +1,4 @@
-// Copyright (C) 2020  Intel Corporation. All rights reserved.
+// Copyright (C) 2022  Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions 
 // and other software and tools, and any partner logic 
 // functions, and any output files from any of the foregoing 
@@ -15,16 +15,16 @@
 
 // VENDOR "Altera"
 // PROGRAM "Quartus Prime"
-// VERSION "Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
+// VERSION "Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition"
 
-// DATE "07/31/2022 10:20:34"
+// DATE "09/18/2022 10:01:56"
 
 // 
 // Device: Altera EP4CE115F29C7 Package FBGA780
 // 
 
 // 
-// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// This Verilog file should be used for Questa Intel FPGA (Verilog) only
 // 
 
 `timescale 1 ps/ 1 ps

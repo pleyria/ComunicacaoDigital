@@ -1,6 +1,9 @@
+/* Integracao do leitor PS/2, conversor PS/2->LCD, display LCD e displays sete seg. */
+
 module ProjetoTeclado(CLK50MHz, data_ps2, clk_ps2, hex1, hex0, end_scan, LCD_RS, LCD_E, LCD_RW, LCD_DATA,
  LCD_ON, LCD_BLON, espera);
  
+	// clock 50 MHz do kit
 	input CLK50MHz;
 	
 	// PS2

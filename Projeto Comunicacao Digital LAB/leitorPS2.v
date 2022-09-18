@@ -9,8 +9,7 @@ module leitorPS2(clk_ps2, data, scan_code, end_scan, count);
 	// sinal de controle que indica fim do recebimento de um pacote
 	output end_scan;
 	
-	// saida do contador de ciclos
-	// (utrilizado apenas para testes em waveform
+	// saida do contador de ciclos (utilizar apenas para testes em waveform)
 	output [7:0] count;
 	
 	// scan code do pacote lido (hexadecimal)

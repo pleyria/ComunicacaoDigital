@@ -1,8 +1,7 @@
 /* Modulo de comunicacao com o display LCD.
- * Recebe um numero de 8 bits representando um comando novo, conforme a
- * oscilacao do sinal num_comando.
- * Executa o comando no display por meio dos sinais de saida conectados
- * a controladora LCD_RS, LCD_E, LCD_RW e LCD_DATA. */
+ * Recebe um numero de 8 bits representando um comando novo.
+ * Os comandos sao executados conforme a mudanca de estado logico do sinal num_comando.
+ * Executa o comando no display por meio dos sinais de saida conectados a controladora LCD_RS, LCD_E, LCD_RW e LCD_DATA. */
 
 module displayLCD(CLK50MHz, num_comando, comando, LCD_RS, LCD_E,
 	LCD_RW, LCD_DATA, espera);
@@ -11,22 +10,28 @@ module displayLCD(CLK50MHz, num_comando, comando, LCD_RS, LCD_E,
 	input CLK50MHz;
 	
 	// indicador de numero de comando recebido
+	// funciona como um clock para a entrada
 	input num_comando;
 	
 	// codigo do comando
 	input [7:0] comando;
 
-	// LCD RS, E, RW e DATA;
+	// LCD_RS 	- seleciona dados (1) ou instrucoes (0)
+	// LCD_E 	- Executado os comando ou recebe os dados na transicao 1->0
+	// LCD_RW 	- seleciona leitura (1) ou escrita (0)
+	// LCD_DATA - entrada de dados ou instrucoes
 	output LCD_RS, LCD_E, LCD_RW;
 	output [7:0] LCD_DATA;
 	
-	// para testes
+	// para testes (nao precisa ser utilizado)
 	output espera;
 	
 	// direcao de escrita
 	parameter
 	write_inc = 1'b0,
 	write_dec = 1'b1;
+	
+	// tabelas de codificacao de comandos
 
 	// letras minusculas
 	parameter
@@ -158,15 +163,23 @@ module displayLCD(CLK50MHz, num_comando, comando, LCD_RS, LCD_E,
 	SETA_BAIXO = 8'd19,
 	SETA_CIMA = 8'd20;
 
+	// registradores de estado
 	reg [7:0] estado, proximo_estado;
+	// registradores para entrada do display
 	reg [7:0] LCD_DATA_r;
 	reg LCD_RS_r, LCD_E_r, LCD_RW_r;
+	// registrador para sequencia dos comandos
 	reg num_comando_r;
+	// clock interno com menor frequencia
 	reg [19:0] CLK_CLOUNT_400Hz;
 	reg CLK400Hz;
+	// saida para testes
 	reg espera_r;
+	// registrador para caractere
 	reg [7:0] char;
+	// registrador para posicao na tela
 	reg [4:0] posicao;
+	// direcao de escrita
 	reg write_dir;
 	
 	assign espera = espera_r;
