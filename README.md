@@ -9,16 +9,38 @@ Projeto da disciplina Laboratório de Sistemas Computacionais: Comunicação Dig
 
 ## Módulos
 
-Dentro da pasta "Projeto Comunicação Digital LAB", encontram-se os seguintes módulos:
+Dentro da pasta "Projeto Comunicação Digital LAB", encontram-se os seguintes módulos alguns módulos de E/S que podem ser utilizados separadamente.
 
-- `displayLCD.v`: Módulo de comunicação com o *display* LCD. Recebe um número de 8 bits representando um comando novo. Os comandos são executados conforme a mudança do estado lógico no sinal `num_comando`. Executa o comando no *display* por meio dos sinais de saída conectados à controladora do kit FPGA.
-- `leitorPS2.v`: Módulo de leitura do sinal do teclado PS/2. Recebe os pacotes de dados do teclado de forma serial. Produz uma saída paralela de um registrador com o *scan code* lido. Utiliza o módulo `registradorDesloc.v` para implementar um registrador de deslocamento interno.
-- `PS2_to_LCD.v`:  Módulo de conversão PS/2 para LCD. Recebe *scan codes* PS/2 e o sinal de código novo `finish_ps2`. Gera comandos para o *display* conforme os *scan codes*. A cada comando gerado, o nivel lógico de `num_comando` é alternado.
-- `hexto7segment.v`: Módulo usado apenas para testes. Decodificador hexadecimal para *display* de sete segmentos. Utilizado para verificar os *scan codes* recebidos do teclado.
-- `ProjetoTeclado.v`: Módulo principal. Integração do leitor PS/2, coconversor PS/2 para LCD, *display* LCD e *displays* sete seg. Realiza a atribuição dos pinos de entrada e saída, conforme a configuração do kit FPGA.
+### displayLDC.v
 
-O módulo `displayLCD.v` pode ser utilizado de maneira independente em outros projetos, como método de saída. Basta seguir a codificação dos comandos apresentados no arquivo, de forma a se gerar os símbolos desejados no *display* LCD.
+O arquivo `displayLCD.v` implementa o módulo de comunicação com o *display* LCD. Como entrada, ele recebe um número de 8 bits representando um comando novo. Os comandos são executados conforme a mudança do estado lógico no sinal `num_comando`, que funciona como um sinal de *clock*.
 
-O módulo `leitorPS2.v` pode ser utilizado de maneira independente em outros projetos, como método de entrada, porém ainda é necessário fazer um tratamento posterior dos dados recebidos, porque a saída deste módulo é apenas uma sequência de *scan codes* recebidos do teclado PS/2.
+Este módulo executa o comando no *display* por meio dos sinais de saída conectados à controladora do kit FPGA. Os comandos disoníveis incluem caracteres convencionais do teclado e comandos especiais para apagar partes do texto ou movimentar o cursor pela tela. O código (8 bits) referente a cada comando pode ser encontrado no próprio código, presente nas listas `parameter`.
 
-O módulo `S2_to_LCD.v` pode ser modificado para que a sequência de *scan codes* recebidos seja convertida em códigos únicos e usados em outros componentes.
+Uma explicação deste módulo pode ser encontrada [neste vídeo](https://youtu.be/hXZPzcdNX2M)
+
+### leitorPS2.v
+
+O arquivo `leitorPS2.v` implementa o módulo de leitura do sinal do teclado PS/2. Como entrada, ele recebe os pacotes de dados do teclado de forma serial. O leitor produz uma saída paralela de um registrador com o *scan code* lido. As entradas `clk_ps2` e `data` são os sinais de entrada do teclado PS/2 e devem seguir a designação dos pinos conforme o manual do kit FPGA. A saída `scan_code` representa os 8 bits de um *scan code* que foi lido de maneira sequencial.
+
+Para utilizar este módulo, é necessário usar também o módulo `registradorDesloc.v` para implementar um registrador de deslocamento.
+
+O módulo `leitorPS2.v` pode ser utilizado de maneira independente em outros projetos, como método de entrada, porém ainda é necessário fazer um tratamento posterior dos dados recebidos, porque a saída deste módulo é apenas uma sequência de *scan codes* recebidos do teclado PS/2. A relação dos *scan codes* com as teclas pressionadas no teclado pode ser encontrada em detalhes no material de referência do projeto.
+
+Uma explicação deste módulo pode ser encontrada [neste vídeo](https://youtu.be/HMGUHCdFYm4)
+
+### PS2_to_LCD.v
+
+O arquivo `PS2_to_LCD.v` implementa o módulo de conversão PS/2 para LCD. O objetivo deste módulo é transformar uma sequência de *scan codes* PS/2 em comandos únicos que possam ser recebidos e executados pelo módulo do *display* LCD. Como entrada, este componente recebe um *scan code* (8 bits), o sinal `finish_ps2`, indicando quando um sinal novo é recebido (fica com nivel alto quando um código acaba de ser lido e com nível baixo quando o código ainda está sendo processado pelo leitor PS/2). As saídas são o comando (8 bits) seguindo a mesma codificação presente no módulo LCD e o sinal `num_comando` que serve como um *clock*, mudando de nível lógico a cada nova saída produzida.
+
+Para realizar a conservão de PS/2 para os comandos LCD, este módulo implementa uma máquina de estados finitos. Para maiores detalhes sobre essa implementação, pode-se consultar o relatório técnico.
+
+Um explicação deste módulo pode se encontrada [neste vídeo](https://youtu.be/51DaE-nJqPw)
+
+### ProjetoTeclado.v
+
+Este é um exemplo de projeto que utiliza todos os componentes apresentados. O arquivo `ProjetoTeclado.v` realiza a integração do leitor PS/2, coconversor PS/2 para LCD, *display* LCD e *displays* sete segmentos para fazer a implementação de um editor de texto simples com o kit FPGA.
+
+Por ser o módulo principal do projeto, ele eealiza a atribuição dos pinos de entrada e saída, conforme a configuração do kit FPGA, seguindo as especificações do manual para os *displays* e conector PS/2.
+
+Um explicação deste módulo pode se encontrada [neste vídeo](https://youtu.be/XifBsfs18XA)

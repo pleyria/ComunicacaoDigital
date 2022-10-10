@@ -1,4 +1,4 @@
-// Copyright (C) 2020  Intel Corporation. All rights reserved.
+// Copyright (C) 2022  Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions 
 // and other software and tools, and any partner logic 
 // functions, and any output files from any of the foregoing 
@@ -19,32 +19,48 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "07/31/2022 10:09:04"
+// Generated on "10/08/2022 10:51:40"
                                                                                 
-// Verilog Test Bench (with test vectors) for design :                          leitorPS2
+// Verilog Test Bench (with test vectors) for design :                          ProjetoTeclado
 // 
 // Simulation tool : 3rd Party
 // 
 
 `timescale 1 ps/ 1 ps
-module leitorPS2_vlg_vec_tst();
+module ProjetoTeclado_vlg_vec_tst();
 // constants                                           
 // general purpose registers
+reg CLK50MHz;
 reg clk_ps2;
-reg data;
+reg data_ps2;
 // wires                                               
-wire [7:0] count;
+wire LCD_BLON;
+wire [7:0] LCD_DATA;
+wire LCD_E;
+wire LCD_ON;
+wire LCD_RS;
+wire LCD_RW;
 wire end_scan;
-wire [7:0] scan_code;
+wire espera;
+wire [6:0] hex0;
+wire [6:0] hex1;
 
 // assign statements (if any)                          
-leitorPS2 i1 (
+ProjetoTeclado i1 (
 // port map - connection between master ports and signals/registers   
+	.CLK50MHz(CLK50MHz),
+	.LCD_BLON(LCD_BLON),
+	.LCD_DATA(LCD_DATA),
+	.LCD_E(LCD_E),
+	.LCD_ON(LCD_ON),
+	.LCD_RS(LCD_RS),
+	.LCD_RW(LCD_RW),
 	.clk_ps2(clk_ps2),
-	.count(count),
-	.data(data),
+	.data_ps2(data_ps2),
 	.end_scan(end_scan),
-	.scan_code(scan_code)
+	.espera(espera),
+	.hex0(hex0),
+	.hex1(hex1)
 );
 initial 
 begin 
@@ -65,14 +81,6 @@ begin
 	end
 	clk_ps2 = 1'b1;
 	clk_ps2 = #10000 1'b0;
-end 
-
-// data
-initial
-begin
-	data = 1'b1;
-	data = #230000 1'b0;
-	data = #230000 1'b1;
 end 
 endmodule
 
