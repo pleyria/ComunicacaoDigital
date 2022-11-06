@@ -53,10 +53,6 @@ O arquivo `PS2_to_LCD.v` implementa o módulo de conversão PS/2 para LCD. O obj
 
 Para realizar a conservão de PS/2 para os comandos LCD, este módulo implementa uma máquina de estados finitos. Para maiores detalhes sobre essa implementação, pode-se consultar o relatório técnico.
 
-A imagem a seguir mostra a conexão do teclado ao kit FPGA pela entrada PS/2 no canto superior direito da placa, juntamente com a utilização do *display* LCD e os *displays* de sete segmentos como método de verificação de erros, através da visualização dos *scan codes* lidos.
-
-![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_conexao.jpg)
-
 Um explicação deste módulo pode se encontrada [neste vídeo](https://youtu.be/51DaE-nJqPw)
 
 ### ProjetoTeclado.v
@@ -64,5 +60,9 @@ Um explicação deste módulo pode se encontrada [neste vídeo](https://youtu.be
 Este é um exemplo de projeto que utiliza todos os componentes apresentados. O arquivo `ProjetoTeclado.v` realiza a integração do leitor PS/2, coconversor PS/2 para LCD, *display* LCD e *displays* sete segmentos para fazer a implementação de um editor de texto simples com o kit FPGA.
 
 Por ser o módulo principal do projeto, ele eealiza a atribuição dos pinos de entrada e saída, conforme a configuração do kit FPGA, seguindo as especificações do manual para os *displays* e conector PS/2.
+
+A imagem a seguir mostra a conexão do teclado ao kit FPGA pela entrada PS/2 no canto superior direito da placa, juntamente com a utilização do *display* LCD e os *displays* de sete segmentos como método de verificação de erros, através da visualização dos *scan codes* lidos.
+
+![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_conexao.jpg)
 
 Um explicação deste módulo pode se encontrada [neste vídeo](https://youtu.be/XifBsfs18XA)
