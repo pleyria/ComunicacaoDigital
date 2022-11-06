@@ -63,6 +63,6 @@ Por ser o módulo principal do projeto, ele eealiza a atribuição dos pinos de 
 
 A imagem a seguir mostra a conexão do teclado ao kit FPGA pela entrada PS/2 no canto superior direito da placa, juntamente com a utilização do *display* LCD e os *displays* de sete segmentos como método de verificação de erros, através da visualização dos *scan codes* lidos.
 
-![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_conexao.jpg)
+![alt text](Referências/FPGA%20fotos/teste_conexao.jpg)
 
 Um explicação deste módulo pode se encontrada [neste vídeo](https://youtu.be/XifBsfs18XA)
