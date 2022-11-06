@@ -21,7 +21,7 @@ Os tipos de caracteres que podem ser exibidos no *display* LCD são mostrados a 
 
 1. Letras maisculas
    
-   ![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_letras_maiusculas.jpg)
+   ![alt text](Referências/FPGA%20fotos/teste_letras_maiusculas.jpg)
 
 2. Letras minusculas
    
