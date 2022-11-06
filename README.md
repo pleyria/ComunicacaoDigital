@@ -1,4 +1,4 @@
-# Comunicacao Digital
+# Módulos de Teclado PS/2 e Display LCD para kit FPGA DE2-115
 
 Projeto da disciplina Laboratório de Sistemas Computacionais: Comunicação Digital (1º semestre/2022). Implementação em Verilog da comunicação de um teclado PS/2 com o kit FPGA DE2-115 como método de entrada e *display* LCD como dispositivo de saída.
 
@@ -17,6 +17,24 @@ O arquivo `displayLCD.v` implementa o módulo de comunicação com o *display* L
 
 Este módulo executa o comando no *display* por meio dos sinais de saída conectados à controladora do kit FPGA. Os comandos disoníveis incluem caracteres convencionais do teclado e comandos especiais para apagar partes do texto ou movimentar o cursor pela tela. O código (8 bits) referente a cada comando pode ser encontrado no próprio código, presente nas listas `parameter`.
 
+Os tipos de caracteres que podem ser exibidos no *display* LCD são mostrados a seguir:
+
+1. Letras maisculas
+   
+   ![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_letras_maiusculas.jpg)
+
+2. Letras minusculas
+   
+   ![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_letras_minusculas.jpg)
+
+3. Números
+   
+   ![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_numeros.jpg)
+
+4. Símbolos especiais
+   
+   ![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_simbolos.jpg)
+
 Uma explicação deste módulo pode ser encontrada [neste vídeo](https://youtu.be/hXZPzcdNX2M)
 
 ### leitorPS2.v
@@ -34,6 +52,10 @@ Uma explicação deste módulo pode ser encontrada [neste vídeo](https://youtu.
 O arquivo `PS2_to_LCD.v` implementa o módulo de conversão PS/2 para LCD. O objetivo deste módulo é transformar uma sequência de *scan codes* PS/2 em comandos únicos que possam ser recebidos e executados pelo módulo do *display* LCD. Como entrada, este componente recebe um *scan code* (8 bits), o sinal `finish_ps2`, indicando quando um sinal novo é recebido (fica com nivel alto quando um código acaba de ser lido e com nível baixo quando o código ainda está sendo processado pelo leitor PS/2). As saídas são o comando (8 bits) seguindo a mesma codificação presente no módulo LCD e o sinal `num_comando` que serve como um *clock*, mudando de nível lógico a cada nova saída produzida.
 
 Para realizar a conservão de PS/2 para os comandos LCD, este módulo implementa uma máquina de estados finitos. Para maiores detalhes sobre essa implementação, pode-se consultar o relatório técnico.
+
+A imagem a seguir mostra a conexão do teclado ao kit FPGA pela entrada PS/2 no canto superior direito da placa, juntamente com a utilização do *display* LCD e os *displays* de sete segmentos como método de verificação de erros, através da visualização dos *scan codes* lidos.
+
+![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_conexao.jpg)
 
 Um explicação deste módulo pode se encontrada [neste vídeo](https://youtu.be/51DaE-nJqPw)
 
