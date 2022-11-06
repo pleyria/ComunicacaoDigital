@@ -25,15 +25,15 @@ Os tipos de caracteres que podem ser exibidos no *display* LCD são mostrados a 
 
 2. Letras minusculas
    
-   ![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_letras_minusculas.jpg)
+   ![alt text](Referências/FPGA%20fotos/teste_letras_minusculas.jpg)
 
 3. Números
    
-   ![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_numeros.jpg)
+   ![alt text](Referências/FPGA%20fotos/teste_numeros.jpg)
 
 4. Símbolos especiais
    
-   ![alt text](/home/pedro/projetos%20quartus/ComunicacaoDigital/Referências/FPGA%20fotos/teste_simbolos.jpg)
+   ![alt text](Referências/FPGA%20fotos/teste_simbolos.jpg)
 
 Uma explicação deste módulo pode ser encontrada [neste vídeo](https://youtu.be/hXZPzcdNX2M)
 
